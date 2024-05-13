@@ -1,0 +1,36 @@
+# I'm a Human player!
+
+import sys, random
+sys.path.append('C:\\Users\SRamusankara\Desktop\python_program\Assignment_pigGame')
+from Interface.IPlayer import IPlayer
+from Common.Score import Score
+
+
+class HPlayer(IPlayer):
+
+    def __init__(self):
+        self.name = str(input("Enter Player Name:"))
+        self.score = Score()
+        self.last_rolled_value = 0
+
+    def roll(self):
+        dice_val = random.randint(1, 6)
+        print("Dice rolled...: " + str(dice_val))
+        self.last_rolled_value = dice_val
+        if dice_val == 1:
+
+            self.hold()
+            return False
+        else:
+            self.score.temp_score = self.score.temp_score + dice_val
+        return True
+
+    def hold(self):
+        if(self.last_rolled_value < 0):
+            print("received -1. so not adding the tempobarbary score!")
+        else:
+            self.score.score = self.score.score + self.score.temp_score
+            self.score.temp_score = 0
+
+    def get_score(self):
+        pass

@@ -1,0 +1,25 @@
+import sys
+sys.path.append('C:\\Users\SRamusankara\Desktop\python_program\Assignment_pigGame')
+from Interface.IScore import IScore
+
+
+class Score(IScore):
+    def __init__(self):
+        self.__temp_score = 0
+        self.__score = 0
+
+    @property
+    def temp_score(self):
+        return self.__temp_score
+
+    @temp_score.setter
+    def temp_score(self, value):
+        self.__temp_score = value
+
+    @property
+    def score(self):
+        return self.__score
+
+    @score.setter
+    def score(self, value):
+        self.__score = value

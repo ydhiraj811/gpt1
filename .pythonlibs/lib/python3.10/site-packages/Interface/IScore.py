@@ -1,0 +1,16 @@
+from abc import ABC, abstractmethod
+
+
+class IScore:
+    def __init__(self):
+        self.__temp_score = 0
+        self.__score = 0
+
+    @abstractmethod
+    def temp_score(self):
+        pass
+
+    @abstractmethod
+    def score(self):
+        pass
+

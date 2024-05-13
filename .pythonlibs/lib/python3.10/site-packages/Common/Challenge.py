@@ -1,0 +1,62 @@
+import sys
+sys.path.append('C:\\Users\SRamusankara\Desktop\python_program\Assignment_pigGame')
+from Interface.IGameType import IGameType
+from Common.HPlayer import HPlayer
+from Common.CPlayer import CPlayer
+
+class Challenge(IGameType):
+    def __init__(self):
+        self.numOfHPlayers = 0
+        self.player1 = 0
+        self.player2 = 0
+
+    def getPlayerMode(self):
+        self.numOfHPlayers = int(input("Select Player Type:\n 1. Single Player\n 2. Dual Player\n >:"))
+
+    def createPlayers(self):
+        self.player1 = HPlayer()
+        if self.numOfHPlayers == 2:
+            self.player2 = HPlayer()
+        elif self.numOfHPlayers == 1:
+            self.player2 = CPlayer()
+
+    def initializeGamePlayers(self):
+        while self.numOfHPlayers != 1 and self.numOfHPlayers != 2:
+            self.getPlayerMode()
+            if self.numOfHPlayers != 1 and self.numOfHPlayers != 2:
+                print("Invalid Selection. try Again!\n\n")
+
+        self.createPlayers()
+
+    def getUserChoice(self):
+        return int(input("Please choose either of the option:\n 1. Roll Dice!\n 2. Pass to other Player!\n>:"))
+
+    def startGame(self):
+        self.initializeGamePlayers()
+        lis = [self.player1,self.player2]
+        print("\n\nHere the Game starts...\n\n")
+        current_player = 0
+        player = lis[current_player]
+        current_player = 1 - current_player
+        while(lis[current_player].score.score < 20):
+
+            print(player.name+"'s turn")
+            val = self.getUserChoice()
+            if val == 1:
+                if player.roll() is False:
+                    player = lis[current_player]
+                    current_player = 1-current_player
+            elif val == 2:
+                player.hold()
+                player = lis[current_player]
+                current_player = 1 - current_player
+
+            print("\n\n*******************************************************")
+            print("updated score board:\n"+str(lis[0].name)+"'s score:"+str(lis[0].score.score)+
+                  "\n"+str(lis[1].name+"'s score:")+str(lis[1].score.score))
+            print("*******************************************************\n\n")
+
+        print(player.name+" won the game..")
+        print("Score Board:\n"+player.name+"'s score:"+str(player.score.score))
+
+

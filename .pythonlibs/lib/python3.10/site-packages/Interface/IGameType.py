@@ -1,0 +1,19 @@
+
+from abc import ABC, abstractmethod
+
+class IGameType():
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def createPlayers(self, numOfHPlayer):
+        pass
+
+    @abstractmethod
+    def startGame(self):
+        pass
+
+    @abstractmethod
+    def initializeGamePlayers(self):
+        pass
+

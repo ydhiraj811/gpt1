@@ -1,0 +1,37 @@
+import sys
+sys.path.append('C:\\Users\SRamusankara\Desktop\python_program\Assignment_pigGame')
+from Common.Challenge import Challenge
+from Common.Tournament import Tournament
+
+class PigGame():
+    def __init__(self):
+        self.gameMode = 0
+        self.game = 0
+
+
+    def getGameMode(self):
+        self.gameMode = int(input("Select Game Mode:\n 1. Challenge\n 2. Tournament\n >:"))
+
+
+    def createGame(self):
+        if self.gameMode == 1:
+            ''' Here we have to create the object of challenge class!! '''
+            self.game = Challenge()
+        elif self.gameMode == 2:
+            ''' Here we have to create the object of Tournament class!! '''
+            self.game = Tournament()
+
+    def startGame(self):
+        print("***************************")
+        print("Lets start the Game!!")
+        print("***************************")
+
+
+        while self.gameMode != 1 and self.gameMode != 2:
+            self.getGameMode()
+            if self.gameMode != 1 and self.gameMode != 2:
+                print("Invalid Selection. try Again!\n\n")
+
+        self.createGame()
+        self.game.startGame()
+

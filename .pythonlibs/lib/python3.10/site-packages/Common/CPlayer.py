@@ -1,0 +1,17 @@
+#I'm a computer!
+
+import sys, random
+sys.path.append('C:\\Users\SRamusankara\Desktop\python_program\Assignment_pigGame')
+from Interface.IPlayer import IPlayer
+from Common.Score import Score
+
+
+class CPlayer(IPlayer):
+    def hold(self):
+        pass
+
+    def roll(self):
+        pass
+
+    def get_score(self):
+        pass

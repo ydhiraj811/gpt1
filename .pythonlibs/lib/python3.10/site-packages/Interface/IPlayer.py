@@ -1,0 +1,20 @@
+
+from abc import ABC, abstractmethod
+
+
+class IPlayer:
+
+    def __init__(self):
+        self.last_rolled_value = 0
+
+    @abstractmethod
+    def roll(self):
+        pass
+
+    @abstractmethod
+    def hold(self):
+        pass
+
+    @abstractmethod
+    def get_score(self):
+        pass
